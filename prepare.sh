@@ -42,7 +42,6 @@ set -eux; \
 	setConfs='
 		BR2_STATIC_LIBS=y
 		BR2_TOOLCHAIN_BUILDROOT_UCLIBC=y
-		BR2_TOOLCHAIN_BUILDROOT_WCHAR=y
 	'; \
 	\
 	unsetConfs='
@@ -177,7 +176,7 @@ set -eux; \
 	setConfs='
 		CONFIG_HUSH=y
 		CONFIG_SHELL_HUSH=y
-		CONFIG_SH_IS_NONE=y
+		CONFIG_SH_IS_HUSH=y
 		CONFIG_BASH_IS_NONE=y
 		CONFIG_STATIC=y
 		CONFIG_TIMEOUT=y
@@ -223,6 +222,6 @@ set -eux; \
 	make -j "$nproc" busybox; \
 	mkdir -p rootfs/bin; \
 	ln -vL busybox rootfs/bin/; \
-	ln -s busybox rootfs/bin/hush; \
+	ln -s busybox rootfs/bin/sh; \
 	ln -s busybox rootfs/bin/timeout; \
 	tar cC rootfs . | xz -T0 -z9 > /host/busybox.tar.xz

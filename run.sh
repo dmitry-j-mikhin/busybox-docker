@@ -1,4 +1,4 @@
-set -x
+set -ex
 
 docker run -it --rm \
  -v `realpath .`:/host \
